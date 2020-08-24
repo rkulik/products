@@ -1,4 +1,7 @@
-import React, { useState, ChangeEvent, useRef, useEffect } from 'react';
+import React, { ChangeEvent, useEffect, useRef, useState } from 'react';
+import Card, { Info } from './components/card';
+import Grid, { Item } from './components/grid';
+import Search from './components/search';
 import { Product } from './types';
 
 const MILLISECONDS = 200;
@@ -43,14 +46,20 @@ const App = () => {
 
   return (
     <div>
-      <input type="text" placeholder="Search..." value={searchTerm} onChange={handleChange} />
-
-      {products.map(({ id, name, image }, index) => (
-        <div key={index}>
-          <p>{name}</p>
-          <img src={image} alt={`Product: ${id}`} />
-        </div>
-      ))}
+      <Search value={searchTerm} onChange={handleChange} />
+      <Grid>
+        {products.map(({ id, name, image, price }, index) => (
+          <Item key={index}>
+            <Card>
+              <img src={image} alt={`Product: ${id}`} />
+              <Info>
+                <h5>{name}</h5>
+                <h6>${price}</h6>
+              </Info>
+            </Card>
+          </Item>
+        ))}
+      </Grid>
     </div>
   );
 };
