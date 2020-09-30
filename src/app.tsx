@@ -30,7 +30,7 @@ const App = () => {
       .then(response => setProducts(response.results[0]?.hits ?? []));
   };
 
-  const handleChange = async ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = ({ target: { value } }: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(value);
 
     if (timeout.current) {
