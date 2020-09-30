@@ -4,7 +4,7 @@ import Grid, { Item } from './components/grid';
 import Search from './components/search';
 import { Product } from './types';
 
-const MILLISECONDS = 200;
+const TIMEOUT_IN_MILLISECONDS = 200;
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -41,7 +41,7 @@ const App = () => {
       abortController.current.abort();
     }
 
-    timeout.current = setTimeout(() => search(value), MILLISECONDS);
+    timeout.current = setTimeout(() => search(value), TIMEOUT_IN_MILLISECONDS);
   };
 
   return (
